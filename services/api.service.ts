@@ -10,10 +10,6 @@ import { API_URL, TOKEN } from "config";
 const baseQuery = fetchBaseQuery({
   baseUrl: API_URL,
   prepareHeaders: (headers, { getState, endpoint }) => {
-    headers.set(
-      "Authorization",
-      "token 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"
-    );
     return headers;
   },
 });
