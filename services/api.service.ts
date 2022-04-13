@@ -5,11 +5,12 @@ import {
   fetchBaseQuery,
   FetchBaseQueryError,
 } from "@reduxjs/toolkit/query/react";
-import { API_URL } from "config";
+import { API_URL, TOKEN } from "config";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: API_URL,
   prepareHeaders: (headers, { getState, endpoint }) => {
+    headers.set("Authorization", "token " + TOKEN);
     return headers;
   },
 });
@@ -23,7 +24,7 @@ const baseQueryWithReauth: BaseQueryFn<
     if (result.error && result.error.status === 401) {
       alert("No autorizado");
     } else {
-      alert("Error del servicio");
+      // alert("Error del servicio");
     }
   }
   return result;

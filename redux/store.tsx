@@ -1,8 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { DEVTOOLS } from "config";
+import { createWrapper } from "next-redux-wrapper";
+import api from "services/api.service";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    [api.reducerPath]: api.reducer,
+  },
   devTools: DEVTOOLS,
 });
 
